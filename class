@@ -1,0 +1,69 @@
+
+<script>
+$(document).ready(function(){
+        $("button").click(function()
+        {
+             var a = $("#first").val();
+             var b = $("#second").val();
+           
+ $("#to").append(
+                "       <div class=\"accordion md-accordion accordion-2\" id=\"accordionEx2\" role=\"tablist\" aria-multiselectable=\"true\">\n" +
+                "                <div class=\"card\">\n" +
+                "                    <div class=\"card-header grey lighten-4\" role=\"tab\" id=\"heading10\">\n" +
+                "                        <a data-toggle=\"collapse\" data-parent=\"#accordionEx2\" href=\"#collapse10\" aria-expanded=\"true\"aria-controls=\"collapse10\">\n" +
+                "                           <h6 class=\"mb-0 black-text text-left font-weight-bold text-uppercase\" id=\"title\">\n"+a+"\n"+
+"                           </h6>\n"+
+                "                        </a>\n" +
+                "                    </div>\n" +
+                "                    <div id=\"collapse10\" class=\"collapse show\" row=\"tabpanel\" aria-labelledby=\"heading10\" data-parent=\"#accordionEx2\">\n" +
+                "                        <div class=\"card-body rgba-grey-strong black-text\">\n" +
+                "                             <p>\n"
+                                            +b+"\n" +
+"                             </p>\n" +
+                "                        </div>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "            </div>"
+            );
+
+        });
+});
+</script>
+</head>
+<body>
+     <nav class="navbar navbar-light bg-primary">
+  <span class="navbar-text h4" style="color: white">My Messages</span>
+</nav><br>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<b style="font-size: 20px">Post Your Message</b>
+<hr/>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<div class="card">
+<div class="card-body px-lg-3">
+<form  style="color: #757575;">
+<div class="md-form mt-2">
+                <input type="text" id="first" class="form-control">
+                <label for="title">type title here...*</label>
+            </div>
+            <div class="md-form">
+                <textarea id="second" class="form-control md-textarea" rows="1"></textarea>
+                <label for="content">type content here...*</label>
+            </div>
+            <button type="button" class="btn btn-danger text-white">Save Post</button>
+        </form>
+</div>
+</div>
+</div>
+</div><br/>
+<div class="row">
+<div class="col-md-12" id="to">
+ </div>
+</div>
+</div>
+</body>
+</html>
