@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <meta charset="utf-8">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+<script>
+$(document).ready(function(){
+        $("button").click(function()
+        {
+             var a = $("#title").val();
+             var b = $("#content").val();
+             $("#heading").text(a);
+             $("#desc").text(b);
+
+        });
+});
+</script>
+</head>
+<body>
+     <nav class="navbar navbar-light bg-primary">
+  <span class="navbar-text h4" style="color: white">My Messages</span>
+</nav><br>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<b style="font-size: 18px">Post Your Message</b>
+<hr>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<div class="card">
+<div class="card-body px-lg-3">
+<form  style="color: #757575;">
+<div class="md-form mt-2">
+                <input type="text" id="title" class="form-control">
+                <label for="title">type title here...*</label>
+            </div>
+            <div class="md-form">
+                <textarea id="content" class="form-control md-textarea" rows="3"></textarea>
+                <label for="content">type content here...*</label>
+            </div>
+            <button type="button" class="btn btn-danger text-white">Save Post</button>
+        </form>
+</div>
+</div>
+</div>
+</div><br>
+<div class="row">
+<div class="col-md-12">
+       <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+          <div class="card">
+    <div class="card-header" role="tab" id="headingTwo2">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+        aria-expanded="false" aria-controls="collapseTwo2">
+        <h5 class="mb-0">
+          Show Saved Post <i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+    <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+      data-parent="#accordionEx">
+      <div class="card-body">
+           <p id="heading"></p>
+           <br>
+           <p id="desc"></p>
+      </div>
+      <div class="card-footer">
+      <button type="button" class="btn btn-outline-primary">EDIT</button>
+      <button type="button" class="btn btn-outline-danger">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
