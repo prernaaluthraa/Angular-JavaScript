@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var id = 0;
+            $("button").click(function () {
+                var a = $("#title").val();
+                var b = $("#content").val();
+                if (a == "" && b == "") {
+                    alert("Nothing to show!!");
+                }
+                else {
+                    var cid = "collapse" + (++id);
+                    $("#result").append(
+                        `<div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingTwo1">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#${cid}"
+                                        aria-expanded="false" aria-controls="collapseTwo1">
+                                        <h5 class="mb-0">
+                                            Show Saved Project <i class="fas fa-angle-down rotate-icon"></i>
+                                        </h5>
+                                    </a>
+                                </div>
+                                <div id=${cid} class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1">
+                                    <div class="card-body">
+                                        <p>${a}</p>
+                                        <p>${b}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
+                    );
+
+
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-primary">
+        <span class="navbar-text h4" style="color: white">My Messages</span>
+    </nav><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <b style="font-size: 18px">Post Your Message</b>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body px-lg-3">
+                        <form style="color: #757575;">
+                            <div class="md-form mt-2">
+                                <input type="text" id="title" class="form-control">
+                                <label for="title">type title here...*</label>
+                            </div>
+                            <div class="md-form">
+                                <textarea id="content" class="form-control md-textarea" rows="3"></textarea>
+                                <label for="content">type content here...*</label>
+                            </div>
+                            <button type="button" class="btn btn-danger text-white">Save Post</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-12" id="result">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
