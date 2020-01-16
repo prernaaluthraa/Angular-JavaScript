@@ -1,0 +1,70 @@
+//html file
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="bg-success text-primary well">{{collegeName}}</h1>
+      <!--<h3 class="text-danger">{{description}}</h3>-->
+      <p class="text-info" [innerText]="description"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <label>Add Server</label>
+      <input type="text" class="form-control" (input)="onUpdateServer($event)"/>
+      <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add New Server</button>
+<br/><br/>
+<p [innerText]="serverCreationStatus" *ngIf="serverCreated;else noServer"></p><br/><br/>
+<ng-template #noServer>
+  no server created as of now!
+  </ng-template><br/>
+      <button class="btn btn-primary" (click)="func()">Click Me</button>
+      <p>{{serverCreationStatus}}</p>
+     
+      <input type="text" class="form-control" (input)="f1($event)"/>
+      <button class="btn btn-primary" (click)="f2()">click me</button>
+      <p>{{b}}</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+//ts file
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  collegeName:String="Chitkara University";
+  description:String="";
+  allowNewServer:boolean=false;
+  serverCreated:boolean=false;
+  serverCreationStatus:String="no server was created";
+  a:String="";
+  b:String="";
+  constructor(){
+    setTimeout(()=>this.allowNewServer = true,3000);
+    this.description="Explore Your Potential";
+  }
+  onCreateServer(){
+    this.serverCreated=true;
+    this.serverCreationStatus="woha!server is created";
+   // console.log("button click on "+new Date().toLocaleTimeString());
+  }
+  func(){
+    this.serverCreationStatus="server was created"
+  }
+  onUpdateServer(textfield){
+    console.log((<HTMLInputElement>textfield.target).value);
+  }
+  f1(text){
+    this.a=(<HTMLInputElement>text.target).value;
+  }
+  f2(){
+this.b=this.a;
+  }
+}
