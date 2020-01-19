@@ -1,0 +1,110 @@
+//app.component.html
+
+<app-header></app-header>
+<app-post-create (postCreated)="onPostAdded($event)"></app-post-create>
+<app-post-list [mypost] ="storedPost"></app-post-list>
+
+
+
+//app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'fun-with-components';
+  storedPost=[];
+  onPostAdded(post){
+this.storedPost.push(post);
+  }
+}
+
+
+
+
+
+
+//post-list.component.html
+
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let post of mypost">
+        <mat-expansion-panel-header>
+            {{post.title}}
+        </mat-expansion-panel-header>
+         <p>{{post.content}}</p>
+    </mat-expansion-panel>
+</mat-accordion>
+
+
+
+//post-list.component.ts
+
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-post-list',
+  templateUrl: './post-list.component.html',
+  styleUrls: ['./post-list.component.css']
+})
+export class PostListComponent implements OnInit {
+@Input() mypost =[];
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+
+
+
+
+
+//post-create.component.html
+
+<h3>Components Interaction using Angular</h3>
+<hr/>
+<mat-card>
+    <mat-form-field>
+        <input matInput placeholder="enter title here.." type="text" [(ngModel)]="enteredTitle">
+    </mat-form-field><br/>
+    <mat-form-field>
+        <textarea matInput placeholder="enter content here.." rows="6" [(ngModel)]="enteredContent"></textarea>
+    </mat-form-field><br/>
+    <button mat-raised-button color="accent" (click)="onAddPost()">Save Post</button>
+    <div>{{enteredTitle}}<br/>{{enteredContent}}</div>
+</mat-card>
+
+
+
+
+
+//post-create.component.ts
+import { Component, OnInit,Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-post-create',
+  templateUrl: './post-create.component.html',
+  styleUrls: ['./post-create.component.css']
+})
+export class PostCreateComponent implements OnInit {
+enteredTitle='abc';
+enteredContent='def';
+  constructor() { }
+  @Output() postCreated=new EventEmitter();
+  onAddPost(){
+ const post= {title:this.enteredTitle,content:this.enteredContent};
+ console.log(post);
+ this.postCreated.emit(post);
+ 
+  }
+
+  ngOnInit() {
+  }
+
+}
