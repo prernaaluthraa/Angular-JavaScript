@@ -1,0 +1,41 @@
+<!DOCTYPE html>  
+<html>  
+      
+<head>  
+    <title>ng-checked Directive</title>  
+  
+    <script src=  
+"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">  
+    </script>  
+</head>  
+  
+<body ng-app="gfg" style="text-align:center">  
+      
+    <h1 style="color:green">GeeksforGeeks</h1>  
+    <h2>ng-bind Directive</h2>          
+      
+    <div ng-controller="app">  
+        num1: <input type="number" ng-model="num1"
+                ng-change="product()" />  
+        <br><br>  
+          
+        num2: <input type="number" ng-model="num2"
+                ng-change="product()" />  
+        <br><br>  
+          
+        <b>Product:</b> <span ng-bind="result"></span>  
+    </div>  
+      
+    <script>  
+        var app = angular.module("gfg", []);  
+        app.controller('app', ['$scope', function ($app) {  
+            $app.num1 = 1;  
+            $app.num2 = 1;  
+            $app.product = function () {  
+                $app.result = ($app.num1 * $app.num2);  
+            }  
+        }]);  
+    </script>  
+</body>  
+  
+</html>
